@@ -1,0 +1,87 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    display: flex;
+    font-size: large;
+    background-color: lightgrey;
+    border-radius: 0%;
+    height: 200vh;
+    border-style: hidden;
+}
+
+.container{
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    width: 300px;   
+}
+
+.title{
+    margin: 0;
+}
+
+.subtitle{
+    display: inline-block;
+    margin: 5px 0 20px;
+    opacity: 0.8;
+}
+
+.header{
+    background-color: lightblue;
+    color: black;
+    padding: 30px 20px;
+}
+
+.header input{
+    background-color: rgba(0,0,0,0.3);
+    border: 0;
+    border-radius: 50px;
+    font-size: 14px;
+    padding: 10px 15px;
+    width: auto;
+}
+
+.header input:focus{
+    outline: none;
+}
+
+.student-list {
+    background-color:lightgray;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.student-list li{
+    display: flex;
+    padding: 20px;
+}
+
+.student-list img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 50px;
+    width: 50px;
+}
+
+.student-list .student-info{
+    margin-left: 10px;
+}
+
+.student-list .student-info h4{
+    margin: 0 0 10px;
+}
+
+.student-list .student-info p{
+    font-size: 12px;
+}
+
+.student-list li:not(:last-of-type){
+    border-bottom: 1px solid #eee;
+}
+
+.student-list li.hide {
+    display: none;
+}

@@ -4,12 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Live Student filter</title>
+    <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
-    <script src="style.css"></script>
     <script src="index.json"></script>
 </head>
 <body>
-    
+    <h1>School Assignment! </h1>
+    <div class="container">
+     <header class="header">
+        <h4 class="title">Live Student filter </h4>
+        <small class="subtitle">Search by name and/or location</small>
+        <input type="text" id="filter" placeholder="search">
+     </header>
+
+     <ul id="result" class="student-list">
+        <li>
+            <h3>Loading...</h3>
+        </li>
+     </ul>
+    </div>
 </body>
 </html>
