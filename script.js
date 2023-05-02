@@ -1,10 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
 const result = document.getElementById('result')
-const filter = document.getElementById('filter')
+let filter;
 const listItems = []
 
-getData()
 
-filter.addEventListener('input', (e) => filterData(e.target.value))
+getData()
 
 async function getData() {
     const res = await fetch ('https://randomuser.me/api?results=50');
@@ -14,6 +14,7 @@ async function getData() {
    //Clear result
    result.innerHTML = '';
 
+   //create new HTML element
    const ul = document.createElement('ul')
 
    results.forEach(user => {
@@ -27,15 +28,18 @@ async function getData() {
             <h4>${user.name.first} ${user.name.last}</h4>
             <p>${user.location.city}, ${user.location.country}</p>
          </div>
-        `
-        ul.appendChild(li)
+        `;
+        ul.appendChild(li);
+    });
 
-        result.appendChild(li)
-    })
-    result.appendChild(ul)
+    //append new html element
+    result.appendChild(ul);
+    filter = document.getElementById('filter');
+    filter.addEventListener('input', (e) => filterData(e.target.value));
 }
 
 function filterData(searchTerm) {
+    const items = result.querySelectorAll('li')
    listItems.forEach(item => {
     if(item.innerText.toLowerCase().includes(searchTerm.toLowerCase())){
         item.classList.remove('hide')
@@ -44,3 +48,4 @@ function filterData(searchTerm) {
     }
    })
 }
+})
