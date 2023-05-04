@@ -48,4 +48,19 @@ function filterData(searchTerm) {
     }
    })
 }
+
+//function to fetch the data
+async function fetchData() {
+    const res = await fetch('https://randomuser.me/api?results=50');
+    const { results } = await res.json();
+    return results;
+  }
+  
+  // save the results as JSON data
+  fetchData().then((results) => {
+    const jsonData = JSON.stringify(results);
+    
+    // Save the JSON data to a file using a server-side script or a database
+  });
+  
 })
