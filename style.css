@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
@@ -5,14 +8,15 @@ body{
     font-size: large;
     background-color: lightgrey;
     border-radius: 0%;
-    height: 200vh;
+    height: 120vh;
     border-style: hidden;
+    justify-content: center;
 }
 
 .container{
     border-radius: 5px;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
-    overflow: hidden;
+    overflow: auto;
     width: 300px;   
 }
 
