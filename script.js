@@ -3,7 +3,6 @@ const result = document.getElementById('result')
 let filter;
 const listItems = []
 
-
 getData()
 
 async function getData() {
@@ -49,3 +48,4 @@ function filterData(searchTerm) {
    })
 }  
 })
+  
