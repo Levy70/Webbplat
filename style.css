@@ -17,7 +17,7 @@ body{
     width: 300px;   
 }
 
-.student{
+.people{
     margin: 0;
 }
 
@@ -46,7 +46,7 @@ body{
     outline: none;
 }
 
-.student-list {
+.people-list {
     background-color:lightgray;
     list-style-type: none;
     margin: 0;
@@ -55,34 +55,34 @@ body{
     overflow-y: auto;
 }
 
-.student-list li{
+.people-list li{
     display: flex;
     padding: 20px;
 }
 
-.student-list img {
+.people-list img {
     border-radius: 50%;
     object-fit: cover;
     height: 50px;
     width: 50px;
 }
 
-.student-list .student-info{
+.people-list .people-info{
     margin-left: 10px;
 }
 
-.student-list .student-info h4{
+.people-list .people-info h4{
     margin: 0 0 10px;
 }
 
-.student-list .student-info p{
+.people-list .people-info p{
     font-size: 12px;
 }
 
-.student-list li:not(:last-of-type){
+.people-list li:not(:last-of-type){
     border-bottom: 1px solid #eee;
 }
 
-.student-list li.hide {
+.people-list li.hide {
     display: none;
 }
