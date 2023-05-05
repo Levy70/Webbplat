@@ -47,5 +47,4 @@ function filterData(searchTerm) {
     }
    })
 }  
-})
-  
+}) 
