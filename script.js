@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
          <div class="user-info">
             <h4>${user.name.first} ${user.name.last}</h4>
             <p>${user.location.city}, ${user.location.country}</p>
+            <button class="delete-btn">Delete</button>
          </div>
         `;
       ul.appendChild(li);
@@ -46,16 +47,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
     filter = document.getElementById('filter');
     filter.addEventListener('input', (e) => filterData(e.target.value));
+
+    // Add event listeners for delete buttons
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach((button, index) => {
+      button.addEventListener('click', () => deleteUser(index));
+    });
   }
 
   function filterData(searchTerm) {
-    const items = result.querySelectorAll('li');
     listItems.forEach(item => {
       if (item.innerText.toLowerCase().includes(searchTerm.toLowerCase())) {
-        item.classList.remove('hide');
+        item.style.display = 'block';
       } else {
-        item.classList.add('hide');
+        item.style.display = 'none';
       }
     });
   }
+
+  function saveNewUser(user) {
+    const savedUsers = localStorage.getItem('users');
+    let users = [];
+
+    if (savedUsers) {
+      users = JSON.parse(savedUsers);
+    }
+
+    users.push(user);
+
+    // Update localStorage with new user data
+    localStorage.setItem('users', JSON.stringify(users));
+    console.log('New user data saved to localStorage');
+
+    // Update the displayed list of users
+    updateUserList();
+  }
+
+  function deleteUser(index) {
+    const savedUsers = localStorage.getItem('users');
+    let users = [];
+
+    if (savedUsers) {
+      users = JSON.parse(savedUsers);
+      users.splice(index, 1); // Remove the user from the array
+      localStorage.setItem('users', JSON.stringify(users)); // Update localStorage
+      console.log('User deleted from localStorage');
+      updateUserList(); // Update the displayed list of users
+    }
+  }
+
+  function updateUserList() {
+    const savedUsers = localStorage.getItem('users');
+    const users = JSON.parse(savedUsers);
+
+    result.innerHTML = '';
+
+    const ul = document.createElement('ul');
+
+    users.forEach(user => {
+      const li = document.createElement('li');
+      listItems.push(li);
+
+      li.innerHTML = ` 
+         <img src="${user.picture.large}" alt="${user.name.first}">
+         <div class="user-info">
+            <h4>${user.name.first} ${user.name.last}</h4>
+            <p>${user.location.city}, ${user.location.country}</p>
+            <button class="delete-btn">Delete</button>
+         </div>
+        `;
+      ul.appendChild(li);
+    });
+
+    result.appendChild(ul);
+
+    // Add event listeners for delete buttons
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    deleteButtons.forEach((button, index) => {
+      button.addEventListener('click', () => deleteUser(index));
+    });
+  }
+
+  const addUserForm = document.getElementById('addUserForm');
+  addUserForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const firstName = document.getElementById('firstNameInput').value;
+    const lastName = document.getElementById('lastNameInput').value;
+    const city = document.getElementById('cityInput').value;
+    const country = document.getElementById('countryInput').value;
+
+    const newUser = {
+      name: {
+        first: firstName,
+        last: lastName
+      },
+      location: {
+        city: city,
+        country: country
+      },
+      picture: {
+        large: 'path/to/profile-picture.jpg'
+      }
+    };
+
+    saveNewUser(newUser);
+    addUserForm.reset();
+  });
 });
